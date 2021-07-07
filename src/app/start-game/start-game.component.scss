@@ -1,0 +1,143 @@
+header{
+    color: white;  
+    margin-top: -3rem;
+    margin-left: -70rem;
+}
+.wrapper{
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+.logo-text{
+    margin-top: 5rem;
+    line-height: 27px;
+    h1{
+        font-weight: 200;
+        font-family: 'Roboto', sans-serif;
+        font-size: 25px;
+        text-transform: uppercase;
+    }
+    .logo-text-big{
+        font-weight: bold;
+        font-size: 43px;
+    }
+    .logo-text-copyrighter{
+        font-weight: normal;
+        font-size: 10px;
+        margin-right: -5rem;
+        margin-top: -25px;
+    }
+}
+.text-sel-pl{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    text-align: left;
+}
+.common{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+    
+    input{
+        margin-right: 3rem;
+        border-color: white;
+        width: 50%;
+        height: 46px;
+        font-size: 25px;
+        padding-left: 10px;
+        border-radius: 0.3rem;
+        color: grey;
+    }
+    button{
+        background-color:rgba(255, 217, 0, 0.856);
+        border-color: rgba(255, 217, 0, 0.856);
+        width: 50%;
+        height: 55px;
+        font-size: 25px;
+        border-radius: 0.3rem;
+    }
+}
+.list-players{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+.player{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    margin-bottom: 5px;
+    color: grey;
+    border-radius:0.5rem;
+    .username{
+        font-size: 25px;
+        margin-left: 2rem;
+    }
+    .email{
+        font-size: 25px;
+        margin-right: -14rem;
+    }
+    img{
+        width: 2rem;
+        height: 2rem;
+        padding-top: 25px;
+        padding-right: 10px;
+    }
+}
+.type-game{
+    .common-type-game{
+        display: flex;
+        flex-direction: column;
+        .games{
+            display: flex;
+
+        }
+        
+        p{
+            color:white;
+            font-size: 25px;
+            text-align: left;
+        }
+        .type-game-link{
+            color: black;
+            border-color: white;
+            background-color: white;
+            border-radius: 45px;
+            padding: 1.8rem;
+            font-size: 25px;
+            margin-right: 2rem;
+            text-decoration: none;
+        }
+        .type-game-link-active{
+            color: black;
+            border-color: rgba(255, 217, 0, 0.856);
+            background-color:rgba(255, 217, 0, 0.856);
+            border-radius: 45px;
+            padding: 1.8rem;
+            font-size: 25px;
+            margin-right: 2rem;
+            text-decoration: none;
+            
+        }
+
+    }
+    .start-btn{
+        margin-top: 5rem;
+        color: white;
+        font-size: 25px;
+        border-color: rgba(47, 199, 47, 0.63);
+        padding: 1rem 16rem;
+        background-color: rgba(47, 199, 47, 0.63);
+        width: 100%;
+        padding: 1rem;
+    }
+
+    
+
+}

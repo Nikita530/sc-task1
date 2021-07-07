@@ -1,0 +1,106 @@
+<header>
+    <div class="wrapper">
+        <div class="header-common-block">
+            <div class="logo-text">
+                <h1>
+                  count your <br />
+                  <span class="logo-text-big">points</span><br />
+                </h1>
+                <p class="logo-text-copyrighter">©Softclub Edition</p>
+              </div>
+              <div class="game-btn">
+                  <button routerLink="/start-game" class="new-g-btn">New game</button>
+              </div>
+        </div>
+    </div>
+</header><hr>
+<section class="throw-results">
+    <div class="wrapper">
+        <div class="list-players" *ngFor="let user of users">
+            <div class="player">
+              <p class="username">{{ user.username }}</p>
+            </div>  
+            <div class="darts">
+                <form [formGroup]="faGroup" (ngSubmit)="onSubmit()"  class="dart">
+                    <p class="number-dart">
+                        Dart 1
+                    </p>
+                    <input formArrayName="arr" type="text" class="inp-points">
+                    <ul class="coefficient">
+                        <li>
+                            <button>
+                                1x
+                            </button>
+                        </li>
+                        <li>
+                            <button>
+                                2x
+                            </button>
+                        </li>
+                        <li>
+                            <button>
+                                3x
+                            </button>
+                        </li>
+                    </ul>
+                    <button type="submit">add</button>
+                </form>
+                <div class="dart">
+                    <p class="number-dart">
+                        Dart 2
+                    </p>
+                    <input type="text" class="inp-points">
+                    <ul class="coefficient">
+                        <li>
+                            <button>
+                                1x
+                            </button>
+                        </li>
+                        <li>
+                            <button>
+                                2x
+                            </button>
+                        </li>
+                        <li>
+                            <button>
+                                3x
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dart">
+                    <p class="number-dart">
+                        Dart 3
+                    </p>
+                    <input type="text" class="inp-points">
+                    <ul class="coefficient">
+                        <li>
+                            <button>
+                                1x
+                            </button>
+                        </li>
+                        <li>
+                            <button>
+                                2x
+                            </button>
+                        </li>
+                        <li>
+                            <button>
+                                3x
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</section>
+<section>
+    <div class="list-results" *ngFor="let point of points" >
+        <p>{{point}}</p>
+    </div>
+    
+</section>
+

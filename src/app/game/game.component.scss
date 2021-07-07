@@ -1,0 +1,90 @@
+header{
+    color: white;  
+    
+    .wrapper{
+        width: 85%;
+        margin: 0 auto;
+        
+        .header-common-block{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .logo-text{
+                line-height: 27px;
+                h1{
+                    font-weight: 200;
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 25px;
+                    text-transform: uppercase;
+                }
+                .logo-text-big{
+                    font-weight: bold;
+                    font-size: 43px;
+                }
+                .logo-text-copyrighter{
+                    font-weight: normal;
+                    font-size: 10px;
+                    margin-right: -5rem;
+                    margin-top: -25px;
+                }
+            }
+            .new-g-btn{
+                background-color: rgba(255, 217, 0, 0.856);
+                color: black;
+                padding: 1rem 2rem;
+                border-radius: 0.5rem;
+
+            }
+        }  
+    }
+    
+}
+hr{
+    color: white;
+}
+.throw-results{
+    color: white;
+    .wrapper{
+        width: 85%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        .list-players{
+            width: 25%;
+            .player{
+                .username{
+    
+                }
+            }
+            .darts{
+                display: flex;
+                flex-direction: column;
+                .dart{
+                    display: flex;
+                    align-items: center;
+                    .number-dart{
+                        margin-right: 1rem;
+                    }
+                    .inp-points{
+                        height: 1rem;
+                        width: 2.5rem;
+                        margin-right: -2.5rem;
+                    }
+                    .coefficient{
+                        list-style-type: none;
+                        display: flex;
+                    }
+                }
+            }
+        }
+        .add-result-btn{
+            width:4rem;
+            background-color: rgba(255, 217, 0, 0.856);
+            margin: 0 auto;
+        }
+    }
+    
+
+}
+
+
