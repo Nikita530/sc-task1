@@ -20,12 +20,12 @@
             <div class="player">
               <p class="username">{{ user.username }}</p>
             </div>  
-            <div class="darts">
-                <form [formGroup]="faGroup" (ngSubmit)="onSubmit()"  class="dart">
+            <form [formGroup]="dartsForm" (submit)="onSubmit()" class="darts">
+                <div class="dart" >
                     <p class="number-dart">
                         Dart 1
                     </p>
-                    <input formArrayName="arr" type="text" class="inp-points">
+                    <input formControlName="firstDart"  type="text" class="inp-points">
                     <ul class="coefficient">
                         <li>
                             <button>
@@ -43,13 +43,13 @@
                             </button>
                         </li>
                     </ul>
-                    <button type="submit">add</button>
-                </form>
+                   
+                </div>
                 <div class="dart">
                     <p class="number-dart">
                         Dart 2
                     </p>
-                    <input type="text" class="inp-points">
+                    <input formControlName="secondDart" type="text" class="inp-points">
                     <ul class="coefficient">
                         <li>
                             <button>
@@ -72,7 +72,7 @@
                     <p class="number-dart">
                         Dart 3
                     </p>
-                    <input type="text" class="inp-points">
+                    <input formControlName="thirdDart" type="text" class="inp-points">
                     <ul class="coefficient">
                         <li>
                             <button>
@@ -91,16 +91,41 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+                <button type="submit" >add</button>
+            </form>
         </div>
         
         
     </div>
 </section>
-<section>
-    <div class="list-results" *ngFor="let point of points" >
-        <p>{{point}}</p>
+<hr>
+<section class="list-results">
+    <div class="wrapper">
+        <div class="common-block-list">
+            <div class="list-players" *ngFor="let user of users" >
+                <ul>
+                    <li class="username">
+                        {{user.username}}
+                    </li>
+                </ul>
+            </div>
+            <div class="list-points" *ngFor="let dart of point">
+                <ul>
+                    <li>
+                        {{dart.firstDart}}
+                    </li>
+                    <li>
+                        {{dart.secondDart}}
+                    </li>
+                    <li>
+                        {{dart.thirdDart}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
     </div>
+    
     
 </section>
 

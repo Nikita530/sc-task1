@@ -9,7 +9,10 @@ interface User {
   getString: () => string;
 }
 interface Dart{
-  point: string;
+  firstDart: string;
+  secondDart: string;
+  thirdDart: string;
+  getString: () => string;
 }
 
 @Injectable({

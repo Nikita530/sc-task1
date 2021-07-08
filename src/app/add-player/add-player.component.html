@@ -17,7 +17,7 @@
       <input type="text" required formControlName="username" />
       <label for="text">Email</label>
       <input type="text" required formControlName="email" />
-      <button type="submit" class="btn">Add</button>
+      <button type="submit" [disabled]="!form.valid" class="btn">Add</button>
     </form>
   </div>
 </section>
