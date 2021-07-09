@@ -15,7 +15,7 @@
       Select players
     </p>
     <div class="common">
-      <input type="text" placeholder="Search">
+      <input type="text" ([ngModel])="searchArr" placeholder="Search">
       <button routerLink="/add-player">New player</button>
     </div> 
     <div class="list-players" *ngFor="let user of users; let i = index">
@@ -35,14 +35,12 @@
         Choose game
       </p>
       <div class="games">
-        <button class="type-game-link" (click)="fbToggle = !fbToggle" [class.type-game-link]="fbToggle" [class.type-game-link-active]="!fbToggle">501</button>
-        <button class="type-game-link" (click)="sbToggle = !sbToggle" [class.type-game-link]="sbToggle" [class.type-game-link-active]="!sbToggle">301</button>
+        <button class="type-game-link" required (click)="gameType = '501'" [class.type-game-link-active]="gameType === '501'">501</button>
+        <button class="type-game-link" required (click)="gameType = '301'" [class.type-game-link-active]="gameType === '301'">301</button>
       </div>
     </div>
-    <button class="start-btn" routerLink="/game">
+    <button [disabled]="gameType === null"  class="start-btn" routerLink="/game">
       start game
     </button>
   </div>
 </section>
-
-

@@ -1,7 +1,12 @@
 import { PlayersService } from './../shared/players.service';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
+import {
+   debounceTime, distinctUntilChanged, switchMap
+ } from 'rxjs/operators';
 
+ 
 @Component({
   selector: 'app-start-game',
   templateUrl: './start-game.component.html',
@@ -9,18 +14,27 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 })
 export class StartGameComponent implements OnInit {
   public user?: string;
-  fbToggle: boolean = true;
-  sbToggle: boolean = true;
+  public gameType: "501" | "301" | null = null;
+  public searchArr = [];
+  
 
   constructor(private playersService: PlayersService) {}
-  ngOnInit(): void {}
+  
 
+  ngOnInit(): void {
+    
+  }
   public get users() {
     return this.playersService.players;
   }
+  public  search():void{
+    console.log(this.searchArr);
 
+  }
   public removePlayer(index: number) {
     this.playersService.players.splice(index, 1);
   }
+  
+  
   
 }

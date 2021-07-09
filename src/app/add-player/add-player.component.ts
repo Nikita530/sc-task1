@@ -15,7 +15,7 @@ export class AddPlayerComponent implements OnInit {
 
   public form = this.fb.group({
     username: [null, Validators.required],
-    email: [null, Validators.required],
+    email: [null, Validators.email],
   });
 
  

@@ -34,4 +34,7 @@ export class PlayersService {
     }
   }*/
   
+  /* GET heroes whose name contains search term */
+
 }
+

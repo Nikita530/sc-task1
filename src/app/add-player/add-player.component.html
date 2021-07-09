@@ -14,9 +14,9 @@
     <p class="add-player-text">Add a new player to start the game</p>
     <form [formGroup]="form" (submit)="onSubmit()">
       <label for="text">User Name</label>
-      <input type="text" required formControlName="username" />
+      <input type="text" required maxLength="20" formControlName="username" />
       <label for="text">Email</label>
-      <input type="text" required formControlName="email" />
+      <input type="text"  formControlName="email" />
       <button type="submit" [disabled]="!form.valid" class="btn">Add</button>
     </form>
   </div>
