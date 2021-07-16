@@ -6,13 +6,11 @@ import { Router } from '@angular/router';
 interface User {
   username: string;
   email: string;
-  getString: () => string;
 }
 interface Dart{
   firstDart: string;
   secondDart: string;
   thirdDart: string;
-  getString: () => string;
 }
 
 @Injectable({

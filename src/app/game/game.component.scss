@@ -57,9 +57,8 @@ hr{
                 }
             }
             .darts{
-                display: flex;
-                flex-direction: column;
-                .dart{
+                
+                .darts{
                     display: flex;
                     align-items: center;
                     .number-dart{
@@ -68,7 +67,7 @@ hr{
                     .inp-points{
                         height: 1rem;
                         width: 2.5rem;
-                        margin-right: -2.5rem;
+                        
                     }
                     .coefficient{
                         list-style-type: none;

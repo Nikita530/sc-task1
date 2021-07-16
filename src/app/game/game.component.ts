@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayersService } from '../shared/players.service';
-import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-game',
@@ -11,26 +11,40 @@ export class GameComponent implements OnInit {
   public user?: string;
   public points?: any;
   public dart?: any;
+  //public dartsForm?: FormGroup;
+  // public darts?: any;
+  
   
 
-  constructor(private playersService: PlayersService, private fb: FormBuilder) { }
-  
-  /*public faGroup = this.fb.group({
-    arr: this.fb.array([
-      this.fb.group({
-        point: [null, Validators.required, Validators.min(0)],
-      })
-    ])
-  })*/
-  public dartsForm = this.fb.group({
-        firstDart: [null, Validators.required],
-        secondDart: [null, Validators.required],
-        thirdDart: [null, Validators.required]
-  });
-
-  ngOnInit(): void {
+  constructor(private playersService: PlayersService, private fb: FormBuilder) { 
   }
   
+  public dartsForm = this.fb.group({
+    darts: this.fb.array([
+      this.newDart(),
+      
+
+    ]), 
+  });
+
+  
+
+  ngOnInit(): void {
+    
+  }
+  
+  public get arrDarts(): FormArray{
+    return this.dartsForm.controls["darts"] as FormArray;
+  }
+
+  public newDart(): FormGroup{
+    return this.fb.group({
+        firstDart: ['', Validators.required],
+        secondDart: ['', Validators.required],
+        thirdDart: ['', Validators.required]
+      });
+  }
+
   public get users() {
     return this.playersService.players;
   }
@@ -42,17 +56,9 @@ export class GameComponent implements OnInit {
       console.log(this.playersService.points);
     }
   }
+
   public get point(){
     return this.playersService.points;
   }
-
-  /*public get dartArr(){
-    return this.dartsForm.get('dartArr') as FormArray;
-  }
-  adddartArr(){
-    this.dartArr.push(this.fb.control(''));
-  }
-
-*/
 
 }
