@@ -56,31 +56,51 @@ hr{
                     
                 }
             }
-            .darts{
-                
-                .darts{
-                    display: flex;
-                    align-items: center;
-                    .number-dart{
-                        margin-right: 1rem;
-                    }
-                    .inp-points{
-                        height: 1rem;
-                        width: 2.5rem;
-                        
-                    }
-                    .coefficient{
-                        list-style-type: none;
+            .form-points{
+                .arr-darts{ 
+                    .darts{
                         display: flex;
+                        flex-direction: column;
+                        .dart{
+                            margin-bottom: 0.3rem;
+                            .number-dart{
+                                margin-right: 1rem;
+                            }
+                            .inp-points{
+                                height: 1rem;
+                                width: 2.5rem;
+                                
+                            }
+                            ul{
+                                li{
+                                    list-style-type: none;
+                                    .inp-coefficient{
+                                        opacity: 0;
+                                        visibility: hidden;
+                                    }
+                                    label{
+                                        span{
+
+                                        }
+                                    }
+                                }
+                            }
+                        }  
                     }
                 }
             }
+        
+            
         }
-        .add-result-btn{
-            width:4rem;
-            background-color: rgba(255, 217, 0, 0.856);
-            margin: 0 auto;
-        }
+    }
+    .add-btn{
+        margin-left: 40%;
+        width: 16%;
+        background-color: rgba(255, 217, 0, 0.856);
+        border-color: rgba(255, 217, 0, 0.856);
+        padding: 0.7rem 10rem;
+        border-radius: 0.5rem;
+        margin-top: 1.5rem;
     }
     
 
@@ -89,26 +109,23 @@ hr{
     .wrapper{
         width: 85%;
         margin: 0 auto;
-        display: flex;
-            .list-players{
-                
-                ul{
-                    list-style-type: none;
-                    .username{
-                        color: white;
-                    }
-                }
-            }
             .list-points{
-                color: grey;
-                
-                ul{
-                    list-style-type: none;
-                    li{
-
+                width: 100%;
+                border: none;
+                text-align: center;
+                th{
+                }
+                tr{
+                    background-color: white;
+                    height: 2.5rem;
+                    td{
+                        color: gray;
                     }
                 }
             }
+        .list-points{
+            color: white;     
+        }
     }
     
 }

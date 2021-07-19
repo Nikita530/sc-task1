@@ -9,192 +9,86 @@
                 <p class="logo-text-copyrighter">©Softclub Edition</p>
               </div>
               <div class="game-btn">
-                  <button routerLink="/start-game" class="new-g-btn">New game</button>
+                  <button class="new-g-btn" (click)="onNewGame()">New game</button>
               </div>
         </div>
     </div>
 </header><hr>
 <section class="throw-results">
     <div class="wrapper">
-        <div class="list-players" *ngFor="let user of users" >
+        <div class="list-players" *ngFor="let user of users; let i = index;" >
             <div class="player">
               <p class="username">{{ user.username }}</p>
             </div>  
-            <form [formGroup]="dartsForm" (submit)="onSubmit()" >
-                <div formArrayName="darts">
-                    <div *ngFor="let dart of arrDarts.controls; let i = index">
-                        <div [formGroupName]="i">
-                            <p class="number-dart">
-                                Dart 1
-                            </p>
-                            <input type="text" formControlName="firstDart">
-                           <!-- <p class="number-dart">
-                                Dart 2
-                            </p>
-                            <input type="text" formControlName="secondDart">
-                            <p class="number-dart">
-                                Dart 3
-                            </p>
-                            <input type="text" formControlName="thirdDart">
-                        -->
+            <form [formGroup]="dartsForm" class="form-points">
+                <div formArrayName="darts" class="arr-darts">
+                        <div [formGroupName]="i" class="darts">
+                            <div class="dart">
+                                <label class="number-dart">
+                                    Dart 1
+                                </label>
+                                <input type="text" formControlName="firstDart" class="inp-points">
+                                <ul>
+                                    <li>
+                                        <input type="text" class="inp-coefficient">
+                                        <label for="">
+                                            <span>
+                                                1x
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="text" class="inp-coefficient">
+                                        <label for="">
+                                            <span>
+                                                2x
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="text" class="inp-coefficient">
+                                        <label for="">
+                                            <span>
+                                                3x
+                                            </span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="dart">
+                                <label class="number-dart">
+                                    Dart 2
+                                </label>
+                                <input type="text" formControlName="secondDart" class="inp-points">
+                            </div>
+                            <div class="dart">
+                                <label class="number-dart">
+                                    Dart 3
+                                </label>
+                                <input type="text" formControlName="thirdDart" class="inp-points">
+                            </div>
                         </div>
-            
-                    </div>
                 </div>
-                <div formArrayName="darts" class="darts" >
-                    <div *ngFor="let dart of arrDarts.controls; let i = index">
-                        <div [formGroupName]="i">
-                            <p class="number-dart">
-                                Dart 2
-                            </p>
-                            <input formControlName="secondDart"  type="text" class="inp-points">
-                            <!--<p class="number-dart">
-                                Dart 1
-                            </p>
-                            <input formControlName="secondDart" type="text" class="inp-points">
-                            <p class="number-dart">
-                                Dart 1
-                            </p>
-                            <input formControlName="thirdDart"  type="text" class="inp-points">
-                            <ul class="coefficient">
-                                <li>
-                                    <button>
-                                        1x
-                                    </button>
-                                </li>
-                                <li>
-                                    <button>
-                                        2x
-                                    </button>
-                                </li>
-                                <li>
-                                    <button>
-                                        3x
-                                    </button>
-                                </li>
-                            </ul>-->
-                        </div>
-                    </div> 
-                </div>
-                <div formArrayName="darts" class="darts" >
-                    <div *ngFor="let dart of arrDarts.controls; let i = index">
-                        <div [formGroupName]="i">
-                            <p class="number-dart">
-                                Dart 3
-                            </p>
-                            <input formControlName="thirdDart"  type="text" class="inp-points">
-                            <!--<p class="number-dart">
-                                Dart 1
-                            </p>
-                            <input formControlName="secondDart" type="text" class="inp-points">
-                            <p class="number-dart">
-                                Dart 1
-                            </p>
-                            <input formControlName="thirdDart"  type="text" class="inp-points">
-                            <ul class="coefficient">
-                                <li>
-                                    <button>
-                                        1x
-                                    </button>
-                                </li>
-                                <li>
-                                    <button>
-                                        2x
-                                    </button>
-                                </li>
-                                <li>
-                                    <button>
-                                        3x
-                                    </button>
-                                </li>
-                            </ul>-->
-                        </div>
-                    </div> 
-                </div>
-
-                <!--<div class="dart">
-                    <p class="number-dart">
-                        Dart 2
-                    </p>
-                    <input formControlName="secondDart" type="text" class="inp-points">
-                    <ul class="coefficient">
-                        <li>
-                            <button>
-                                1x
-                            </button>
-                        </li>
-                        <li>
-                            <button>
-                                2x
-                            </button>
-                        </li>
-                        <li>
-                            <button>
-                                3x
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="dart">
-                    <p class="number-dart">
-                        Dart 3
-                    </p>
-                    <input formControlName="thirdDart" type="text" class="inp-points">
-                    <ul class="coefficient">
-                        <li>
-                            <button>
-                                1x
-                            </button>
-                        </li>
-                        <li>
-                            <button>
-                                2x
-                            </button>
-                        </li>
-                        <li>
-                            <button>
-                                3x
-                            </button>
-                        </li>
-                    </ul>
-                </div> -->
-                
-                <button type="submit" >add</button>
             </form>
-            
         </div>
-        
-        
     </div>
+    <button (click)="savePoints()" class="add-btn" >add</button>
 </section>
 <hr>
 <section class="list-results">
     <div class="wrapper">
-        <div class="common-block-list">
-            <div class="list-players" *ngFor="let user of users" >
-                <ul>
-                    <li class="username">
-                        {{user.username}}
-                    </li>
-                </ul>
-            </div>
-            <div class="list-points" *ngFor="let dart of point; let i = index">
-                <ul>
-                    <li>
-                        {{dart.firstDart}}
-                    </li>
-                    <li>
-                        {{dart.secondDart}}
-                    </li>
-                    <li>
-                        {{dart.thirdDart}}
-                    </li>
-                </ul>
-            </div>
-        </div>
-        
+        <table class="list-points">
+            <th *ngFor="let user of users">
+                {{user.username}}
+            </th>
+            <tr>
+                <td *ngFor="let dart of points; let i = index">{{i}}
+                    {{dart.firstDart + dart.secondDart + dart.thirdDart}}
+                </td>
+            </tr>
+        </table> 
     </div>
-    
-    
 </section>
-{{this.dartsForm.value | json}}
+
+
+    

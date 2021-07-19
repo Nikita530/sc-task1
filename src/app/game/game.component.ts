@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayersService } from '../shared/players.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+export interface Dart{
+  firstDart: string;
+  secondDart: string;
+  thirdDart: string;
+}
 
 @Component({
   selector: 'app-game',
@@ -9,39 +16,40 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class GameComponent implements OnInit { 
   public user?: string;
-  public points?: any;
-  public dart?: any;
-  //public dartsForm?: FormGroup;
-  // public darts?: any;
-  
-  
-
-  constructor(private playersService: PlayersService, private fb: FormBuilder) { 
+  public points: Dart[] = []; 
+    
+  constructor(private playersService: PlayersService, private fb: FormBuilder,  private router: Router) { 
   }
+
+  /* 
+  
+  group dartsForm (
+    darts - Array (
+      [0] - group(controls...),
+      [1] - group(controls...)
+      ...
+    )
+  )
+
+  */
   
   public dartsForm = this.fb.group({
-    darts: this.fb.array([
-      this.newDart(),
-      
-
-    ]), 
+    darts: this.fb.array(this.playersService.players.map((players) => this.newDart())), 
   });
-
-  
 
   ngOnInit(): void {
     
   }
   
   public get arrDarts(): FormArray{
-    return this.dartsForm.controls["darts"] as FormArray;
+    return this.dartsForm.get("darts") as FormArray;
   }
 
   public newDart(): FormGroup{
     return this.fb.group({
-        firstDart: ['', Validators.required],
+        firstDart: ['', Validators.required ],
         secondDart: ['', Validators.required],
-        thirdDart: ['', Validators.required]
+        thirdDart: ['', Validators.required],
       });
   }
 
@@ -49,16 +57,19 @@ export class GameComponent implements OnInit {
     return this.playersService.players;
   }
   
-  
-  onSubmit(){
+
+  savePoints(): void{
     if(this.dartsForm.valid){
-      this.playersService.points.push({...this.dartsForm.value,  getString: () => '0' });
-      console.log(this.playersService.points);
+      this.playersService.players.forEach((player, index) => {
+        this.points.push({...this.arrDarts.at(index).value});
+      })
+      this.dartsForm.reset();
     }
   }
 
-  public get point(){
-    return this.playersService.points;
+  public onNewGame(): void {
+    this.playersService.players = [];
+    this.router.navigate(['/start-game']);
   }
 
 }

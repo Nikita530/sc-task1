@@ -3,22 +3,18 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 
-interface User {
+export interface User {
   username: string;
   email: string;
 }
-interface Dart{
-  firstDart: string;
-  secondDart: string;
-  thirdDart: string;
-}
+
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class PlayersService {
   players: User[] = [];
-  points: Dart[] = [];
 
 
 
