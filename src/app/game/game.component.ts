@@ -3,7 +3,11 @@ import { PlayersService } from '../shared/players.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-export interface Dart{
+export interface Shot {
+  points: Dart[];
+}
+
+export interface Dart {
   firstDart: string;
   secondDart: string;
   thirdDart: string;
@@ -12,14 +16,14 @@ export interface Dart{
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss']
+  styleUrls: ['./game.component.scss'],
 })
-export class GameComponent implements OnInit { 
+export class GameComponent implements OnInit {
   public user?: string;
-  public points: Dart[] = []; 
-    
-  constructor(private playersService: PlayersService, private fb: FormBuilder,  private router: Router) { 
-  }
+  public shots: Shot[] = [];
+  public coefficientBtn: "1x" | "2x" | "3x" | null = null;
+
+  constructor(private playersService: PlayersService, private fb: FormBuilder, private router: Router) {}
 
   /* 
   
@@ -32,37 +36,32 @@ export class GameComponent implements OnInit {
   )
 
   */
-  
+
   public dartsForm = this.fb.group({
-    darts: this.fb.array(this.playersService.players.map((players) => this.newDart())), 
+    darts: this.fb.array(this.playersService.players.map((players) => this.newDart())),
   });
 
-  ngOnInit(): void {
-    
-  }
-  
-  public get arrDarts(): FormArray{
-    return this.dartsForm.get("darts") as FormArray;
+  ngOnInit(): void {}
+
+  public get arrDarts(): FormArray {
+    return this.dartsForm.get('darts') as FormArray;
   }
 
-  public newDart(): FormGroup{
+  public newDart(): FormGroup {
     return this.fb.group({
-        firstDart: ['', Validators.required ],
-        secondDart: ['', Validators.required],
-        thirdDart: ['', Validators.required],
-      });
+      firstDart: ['', Validators.required],
+      secondDart: ['', Validators.required],
+      thirdDart: ['', Validators.required],
+    });
   }
 
   public get users() {
     return this.playersService.players;
   }
-  
 
-  savePoints(): void{
-    if(this.dartsForm.valid){
-      this.playersService.players.forEach((player, index) => {
-        this.points.push({...this.arrDarts.at(index).value});
-      })
+  savePoints(): void {
+    if (this.dartsForm.valid) {
+      this.shots.push({ points: this.playersService.players.map((_, i) => this.arrDarts.at(i).value) });
       this.dartsForm.reset();
     }
   }
@@ -71,5 +70,4 @@ export class GameComponent implements OnInit {
     this.playersService.players = [];
     this.router.navigate(['/start-game']);
   }
-
 }
