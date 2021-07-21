@@ -26,7 +26,7 @@
           <div [formGroupName]="i" class="darts">
             <div class="dart">
               <label class="number-dart"> Dart 1 </label>
-              <input type="text" formControlName="firstDart" class="inp-points" />
+              <input type="text" formControlName="firstDart" class="inp-points"/>
               <ul class="coefficient">
                 <li>
                     <button (click)="coefficientBtn = '1x'" [class.coefficient-btn-active]="coefficientBtn === '1x'">
@@ -101,11 +101,30 @@
       <th *ngFor="let user of users">
         {{ user.username }}
       </th>
+      
       <tr *ngFor="let shot of shots; let i = index">
         <td *ngFor="let dart of shot.points">
-          {{ +dart.firstDart + +dart.secondDart + +dart.thirdDart }}
+          <div class="number-shot">
+            {{i}}
+          </div>
+          {{ firstType - (+dart.firstDart + +dart.secondDart + +dart.thirdDart) }}
         </td>
       </tr>
+      <ng-container *ngIf="gameType === '501'">
+        <tr *ngFor="let shot of shots; let i = index">
+          <td *ngFor="let dart of shot.points">
+            501
+          </td>
+        </tr>
+      </ng-container>
+      <ng-container *ngIf="gameType === '301'">
+        <tr *ngFor="let shot of shots; let i = index">
+          <td *ngFor="let dart of shot.points">
+            301
+          </td>
+        </tr>
+      </ng-container>
+      
     </table>
   </div>
 </section>

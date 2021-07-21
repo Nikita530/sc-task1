@@ -89,7 +89,7 @@ hr{
                                         background-color: white;
                                         font-size: 11px;
                                         width: 1.8rem;
-                                        height: 1.8rem;
+                                        height: 1.7rem;
                                         color: black;
                                         transition: all ease 0.2s;
                                         border-left: none;
@@ -143,6 +143,11 @@ hr{
                     td{
                         color: gray;
                         width: 25%;
+                        .number-shot{
+                            position: absolute;
+                            left: 8.5rem;
+                            color: white;
+                        }
                     }
                 }
             }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PlayersService } from '../shared/players.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { StartGameComponent } from '../start-game/start-game.component';
 
 export interface Shot {
   points: Dart[];
@@ -22,8 +23,12 @@ export class GameComponent implements OnInit {
   public user?: string;
   public shots: Shot[] = [];
   public coefficientBtn: "1x" | "2x" | "3x" | null = null;
+  public firstType = 501;
+  public secondType = 301;
 
   constructor(private playersService: PlayersService, private fb: FormBuilder, private router: Router) {}
+
+  @Input() public gameType: "501" | "301" | null = null;
 
   /* 
   

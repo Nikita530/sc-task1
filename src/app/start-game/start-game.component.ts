@@ -1,7 +1,6 @@
 import { PlayersService } from './../shared/players.service';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-
 import {
    debounceTime, distinctUntilChanged, switchMap
  } from 'rxjs/operators';
