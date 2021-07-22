@@ -54,9 +54,9 @@ export class GameComponent implements OnInit {
 
   public newDart(): FormGroup {
     return this.fb.group({
-      firstDart: ['', Validators.required],
-      secondDart: ['', Validators.required],
-      thirdDart: ['', Validators.required],
+      firstDart: ['', [Validators.required,Validators.max(150),Validators.min(0),Validators.pattern(/[0-9]/)]],
+      secondDart: ['', [Validators.required,Validators.max(150),Validators.min(0),Validators.pattern(/[0-9]/)]],
+      thirdDart: ['', [Validators.required,Validators.max(150),Validators.min(0),Validators.pattern(/[0-9]/)]],
     });
   }
 

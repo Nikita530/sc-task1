@@ -110,20 +110,20 @@
           {{ firstType - (+dart.firstDart + +dart.secondDart + +dart.thirdDart) }}
         </td>
       </tr>
-      <ng-container *ngIf="gameType === '501'">
-        <tr *ngFor="let shot of shots; let i = index">
-          <td *ngFor="let dart of shot.points">
+      <ng-container>
+        <tr>
+          <td>
             501
           </td>
         </tr>
       </ng-container>
-      <ng-container *ngIf="gameType === '301'">
+      <!--<ng-container *ngIf="gameType === '301'">
         <tr *ngFor="let shot of shots; let i = index">
           <td *ngFor="let dart of shot.points">
             301
           </td>
         </tr>
-      </ng-container>
+      </ng-container>-->
       
     </table>
   </div>
