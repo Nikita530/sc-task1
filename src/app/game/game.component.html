@@ -26,66 +26,66 @@
           <div [formGroupName]="i" class="darts">
             <div class="dart">
               <label class="number-dart"> Dart 1 </label>
-              <input type="text" formControlName="firstDart" class="inp-points"/>
+              <input type="text" formControlName="firstDart" class="inp-points" />
               <ul class="coefficient">
                 <li>
-                    <button (click)="coefficientBtn = '1x'" [class.coefficient-btn-active]="coefficientBtn === '1x'">
-                        1x
-                    </button>
+                  <button (click)="coefficientBtn = '1x'" [class.coefficient-btn-active]="coefficientBtn === '1x'">
+                    1x
+                  </button>
                 </li>
                 <li>
-                    <button (click)="coefficientBtn = '2x'" [class.coefficient-btn-active]="coefficientBtn === '2x'">
-                        2x
-                    </button>
+                  <button (click)="coefficientBtn = '2x'" [class.coefficient-btn-active]="coefficientBtn === '2x'">
+                    2x
+                  </button>
                 </li>
                 <li>
-                    <button (click)="coefficientBtn = '3x'" [class.coefficient-btn-active]="coefficientBtn === '3x'">
-                        3x
-                    </button>
+                  <button (click)="coefficientBtn = '3x'" [class.coefficient-btn-active]="coefficientBtn === '3x'">
+                    3x
+                  </button>
                 </li>
-            </ul>
+              </ul>
             </div>
             <div class="dart">
               <label class="number-dart"> Dart 2 </label>
               <input type="text" formControlName="secondDart" class="inp-points" />
               <ul class="coefficient">
                 <li>
-                    <button (click)="coefficientBtn = '1x'" [class.coefficient-btn-active]="coefficientBtn === '1x'">
-                        1x
-                    </button>
+                  <button (click)="coefficientBtn = '1x'" [class.coefficient-btn-active]="coefficientBtn === '1x'">
+                    1x
+                  </button>
                 </li>
                 <li>
-                    <button (click)="coefficientBtn = '2x'" [class.coefficient-btn-active]="coefficientBtn === '2x'">
-                        2x
-                    </button>
+                  <button (click)="coefficientBtn = '2x'" [class.coefficient-btn-active]="coefficientBtn === '2x'">
+                    2x
+                  </button>
                 </li>
                 <li>
-                    <button (click)="coefficientBtn = '3x'" [class.coefficient-btn-active]="coefficientBtn === '3x'">
-                        3x
-                    </button>
+                  <button (click)="coefficientBtn = '3x'" [class.coefficient-btn-active]="coefficientBtn === '3x'">
+                    3x
+                  </button>
                 </li>
-            </ul>
+              </ul>
             </div>
             <div class="dart">
               <label class="number-dart"> Dart 3 </label>
               <input type="text" formControlName="thirdDart" class="inp-points" />
               <ul class="coefficient">
                 <li>
-                    <button (click)="coefficientBtn = '1x'" [class.coefficient-btn-active]="coefficientBtn === '1x'">
-                        1x
-                    </button>
+                  <button (click)="coefficientBtn = '1x'" [class.coefficient-btn-active]="coefficientBtn === '1x'">
+                    1x
+                  </button>
                 </li>
                 <li>
-                    <button (click)="coefficientBtn = '2x'" [class.coefficient-btn-active]="coefficientBtn === '2x'">
-                        2x
-                    </button>
+                  <button (click)="coefficientBtn = '2x'" [class.coefficient-btn-active]="coefficientBtn === '2x'">
+                    2x
+                  </button>
                 </li>
                 <li>
-                    <button (click)="coefficientBtn = '3x'" [class.coefficient-btn-active]="coefficientBtn === '3x'">
-                        3x
-                    </button>
+                  <button (click)="coefficientBtn = '3x'" [class.coefficient-btn-active]="coefficientBtn === '3x'">
+                    3x
+                  </button>
                 </li>
-            </ul>
+              </ul>
             </div>
           </div>
         </div>
@@ -101,30 +101,14 @@
       <th *ngFor="let user of users">
         {{ user.username }}
       </th>
-      
-      <tr *ngFor="let shot of shots; let i = index">
-        <td *ngFor="let dart of shot.points">
+      <tr *ngFor="let row of pointsCounter.reverse(); let i = index">
+        <td *ngFor="let count of row">
           <div class="number-shot">
-            {{i}}
+            {{ i }}
           </div>
-          {{ firstType - (+dart.firstDart + +dart.secondDart + +dart.thirdDart) }}
+          {{ count }}
         </td>
       </tr>
-      <ng-container>
-        <tr>
-          <td>
-            501
-          </td>
-        </tr>
-      </ng-container>
-      <!--<ng-container *ngIf="gameType === '301'">
-        <tr *ngFor="let shot of shots; let i = index">
-          <td *ngFor="let dart of shot.points">
-            301
-          </td>
-        </tr>
-      </ng-container>-->
-      
     </table>
   </div>
 </section>

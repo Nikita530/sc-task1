@@ -131,7 +131,7 @@ hr{
         width: 85%;
         margin: 0 auto;
             .list-points{
-                
+                width: 100%;
                 border: none;
                 text-align: center;
                 th{
@@ -147,6 +147,9 @@ hr{
                             position: absolute;
                             left: 8.5rem;
                             color: white;
+                        }
+                        .number-shot:last-child{
+                            visibility: hidden;
                         }
                     }
                 }

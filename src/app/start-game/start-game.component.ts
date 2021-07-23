@@ -14,7 +14,7 @@ import {
 export class StartGameComponent implements OnInit {
   public user?: string;
   public gameType: "501" | "301" | null = null;
-  public searchArr = [];
+
   
 
   constructor(private playersService: PlayersService) {}
@@ -26,10 +26,7 @@ export class StartGameComponent implements OnInit {
   public get users() {
     return this.playersService.players;
   }
-  public  search():void{
-    console.log(this.searchArr);
-
-  }
+  
   public removePlayer(index: number) {
     this.playersService.players.splice(index, 1);
   }
