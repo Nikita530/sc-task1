@@ -8,9 +8,10 @@ import { AppComponent } from './app.component';
 import { AddPlayerComponent } from './add-player/add-player.component';
 import { StartGameComponent } from './start-game/start-game.component';
 import { GameComponent } from './game/game.component';
+import { DartsInputComponent } from './game/darts-input/darts-input.component';
 
 @NgModule({
-  declarations: [AppComponent, AddPlayerComponent, StartGameComponent, GameComponent],
+  declarations: [AppComponent, AddPlayerComponent, StartGameComponent, GameComponent, DartsInputComponent],
   imports: [BrowserModule, FormsModule, AppRoutingModule, ReactiveFormsModule],
   providers: [PlayersService],
   bootstrap: [AppComponent],

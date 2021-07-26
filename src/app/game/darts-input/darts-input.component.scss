@@ -1,0 +1,120 @@
+.throw-results{
+    color: white;
+    .wrapper{
+        width: 85%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        .list-players{
+            width: 25%;
+            .player{
+                .username{
+                    
+                }
+            }
+            .form-points{
+                .arr-darts{ 
+                    .darts{
+                        display: flex;
+                        flex-direction: column;
+                        .dart{
+                            display: flex;
+                            align-items: center;
+                            .number-dart{
+                                margin-right: 1rem;
+                            }
+                            .inp-points{
+                                height: 1.6rem;
+                                width: 2.5rem;
+                                border:none;
+                                &.ng-valid.ng-touched {
+                                    border-left: 5px solid green;
+                                }
+                        
+                                &.ng-invalid.ng-touched {
+                                    border-left: 5px solid #a94442; 
+                                }
+                                
+                            }
+                            ul{
+                                display: flex;
+                                padding: 0;
+                                li{
+                                    list-style-type: none;
+                                    button{
+                                        background-color: white;
+                                        font-size: 11px;
+                                        width: 1.8rem;
+                                        height: 1.7rem;
+                                        color: black;
+                                        transition: all ease 0.2s;
+                                        border-left: none;
+                                        border-bottom: none;
+                                        border-top: none;
+                                    }
+                                    button:hover{
+                                        
+                                        background-color: gray;
+                                    }
+                                    .coefficient-btn-active{
+                                        border-color: gray;
+                                        background-color:gray; 
+                                    }
+                                }
+                            }
+                        }  
+                    }
+                }
+            }
+        
+            
+        }
+    }
+    .add-btn{
+        margin-left: 40%;
+        width: 16%;
+        background-color: rgba(255, 217, 0, 0.856);
+        border-color: rgba(255, 217, 0, 0.856);
+        padding: 0.7rem 10rem;
+        border-radius: 0.5rem;
+        margin-top: 1.5rem;
+    }
+}
+
+.list-results{
+    .wrapper{
+        width: 85%;
+        margin: 0 auto;
+            .list-points{
+                width: 100%;
+                border: none;
+                text-align: center;
+                th{
+                    width: 17rem;
+                }
+                tr{
+                    background-color: white;
+                    height: 2.5rem;
+                    td{
+                        color: gray;
+                        width: 17rem;
+                        .number-shot{
+                            position: absolute;
+                            left: 8.5rem;
+                            color: white;
+                        }
+                        .number-shot:last-child{
+                            visibility: hidden;
+                        }
+                    }
+                }
+            }
+        .list-points{
+            color: white;     
+        }
+    }
+    
+}
+hr{
+    color: white;
+}

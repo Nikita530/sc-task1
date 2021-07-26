@@ -13,7 +13,7 @@
   <div class="wrapper">
     <p class="text-sel-pl">Select players</p>
     <div class="common">
-      <input type="text" placeholder="Search" />
+      <input type="text" placeholder="Search" [formControl]="search" />
       <button routerLink="/add-player">New player</button>
     </div>
     <div class="list-players" *ngFor="let user of users; let i = index">
@@ -49,12 +49,6 @@
         </button>
       </div>
     </div>
-    <button [disabled]="gameType === null"
-            class="start-btn"
-            [routerLink]="['/game', gameType]"
-
-    >
-      start game
-    </button>
+    <button [disabled]="gameType === null" class="start-btn" [routerLink]="['/game', gameType]">start game</button>
   </div>
 </section>
