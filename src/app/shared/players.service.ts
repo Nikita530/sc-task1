@@ -19,7 +19,7 @@ export class PlayersService {
 
 
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   /*onSubmit() {
     if (this.playerService.form.valid) {
@@ -27,7 +27,7 @@ export class PlayersService {
       this.router.navigate(['start-game']);
     }
   }*/
-  
+
   /* GET heroes whose name contains search term */
 
 }

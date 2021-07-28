@@ -1,39 +1,39 @@
-header{
+header {
     color: white;
 }
-.log-in{
+.log-in {
     margin-top: 5rem;
 }
-.wrapper{
+.wrapper {
     width: 22%;
     margin: 0 auto;
     text-align: center;
 }
-.logo-text{
+.logo-text {
     margin-top: 5rem;
     line-height: 27px;
-    h1{
+    h1 {
         font-weight: 200;
-        font-family: 'Roboto', sans-serif;
+        font-family: "Roboto", sans-serif;
         font-size: 25px;
         text-transform: uppercase;
     }
-    .logo-text-big{
+    .logo-text-big {
         font-weight: bold;
         font-size: 43px;
     }
-    .logo-text-copyrighter{
+    .logo-text-copyrighter {
         font-weight: normal;
         font-size: 10px;
         margin-right: -5rem;
     }
 }
-.add-player-text{
+.add-player-text {
     margin-top: 5rem;
     color: white;
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
     margin-top: 5rem;
@@ -51,7 +51,7 @@ form{
         }
 
         &.ng-invalid.ng-touched {
-            border-left: 5px solid #a94442; 
+            border-left: 5px solid #a94442;
         }
     }
 
@@ -63,7 +63,7 @@ form{
     }
 }
 
-.btn{
+.btn {
     background-color: rgba(255, 217, 0, 0.856);
     border-color: rgba(255, 217, 0, 0.856);
     height: 2rem;

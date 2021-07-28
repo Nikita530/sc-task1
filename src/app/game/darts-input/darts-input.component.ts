@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, Output,Input } from '@angular/core';
+import { ControlValueAccessor, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PlayersService } from '../../shared/players.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { count } from 'rxjs/operators';
+import { StartGameComponent } from 'src/app/start-game/start-game.component';
+import { CoefficientBtnComponent } from './coefficient-btn/coefficient-btn.component';
 
 
 export type gameType = 501 | 301;
@@ -14,7 +17,7 @@ export type gameType = 501 | 301;
 export class DartsInputComponent implements OnInit {
   public user?: string;
   public pointsCounter: number[][] = [];
-  public coefficientBtn: 1 | 2 | 3 = 1;
+  public value: number | null = null;
 
   constructor(
     private playersService: PlayersService,
@@ -30,9 +33,18 @@ export class DartsInputComponent implements OnInit {
 
   public newDart(): FormGroup {
     return this.fb.group({
-      firstDart: ['', [Validators.required, Validators.max(50), Validators.min(0), Validators.pattern(/[0-9]/)]],
-      secondDart: ['', [Validators.required, Validators.max(50), Validators.min(0), Validators.pattern(/[0-9]/)]],
-      thirdDart: ['', [Validators.required, Validators.max(50), Validators.min(0), Validators.pattern(/[0-9]/)]],
+      firstDart: this.fb.group({
+        dart: ['', [Validators.required, Validators.max(50), Validators.min(0), Validators.pattern(/[0-9]/)]],
+        coefficient: [null, Validators.required]
+      }),
+      secondDart: this.fb.group({
+        dart: ['', [Validators.required, Validators.max(50), Validators.min(0), Validators.pattern(/[0-9]/)]],
+        coefficient: [null, Validators.required]
+      }), 
+      thirdDart: this.fb.group({
+        dart: ['', [Validators.required, Validators.max(50), Validators.min(0), Validators.pattern(/[0-9]/)]],
+        coefficient: [null, Validators.required]
+      })
     });
   }
 
@@ -52,18 +64,16 @@ export class DartsInputComponent implements OnInit {
           const shot = this.arrDarts.at(i).value;
           return (
             count -
-            shot.firstDart * this.coefficientBtn -
-            shot.secondDart * this.coefficientBtn -
-            shot.thirdDart * this.coefficientBtn
+            shot.firstDart.dart  -
+            shot.secondDart.dart  -
+            shot.thirdDart.dart 
           );
           
         })
       );
       this.dartsForm.reset();
     }
-  
-  
-
+   
   }
 
   public get users() {

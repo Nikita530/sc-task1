@@ -31,20 +31,12 @@
     <div class="common-type-game">
       <p>Choose game</p>
       <div class="games">
-        <button
-          class="type-game-link"
-          required
-          (click)="gameType = '501'"
-          [class.type-game-link-active]="gameType === '501'"
-        >
+        <button class="type-game-link" required (click)="gameType = '501'"
+          [class.type-game-link-active]="gameType === '501'">
           501
         </button>
-        <button
-          class="type-game-link"
-          required
-          (click)="gameType = '301'"
-          [class.type-game-link-active]="gameType === '301'"
-        >
+        <button class="type-game-link" required (click)="gameType = '301'"
+          [class.type-game-link-active]="gameType === '301'">
           301
         </button>
       </div>

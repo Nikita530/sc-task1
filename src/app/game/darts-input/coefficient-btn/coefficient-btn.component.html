@@ -1,0 +1,17 @@
+<ul class="coefficient">
+    <li>
+        <button [class.coefficient-btn-active]="value === 1" (click)="setValue(1)">
+            1x
+        </button>
+    </li>
+    <li>
+        <button [class.coefficient-btn-active]="value === 2" (click)="setValue(2)">
+            2x
+        </button>
+    </li>
+    <li>
+        <button [class.coefficient-btn-active]="value === 3" (click)="setValue(3)">
+            3x
+        </button>
+    </li>
+</ul>
