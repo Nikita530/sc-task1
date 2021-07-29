@@ -1,48 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-import { NG_VALUE_ACCESSOR, Validator, ControlValueAccessor } from '@angular/forms';
-
-
+import { Component, OnInit } from "@angular/core";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 @Component({
-  selector: 'app-coefficient-btn',
-  templateUrl: './coefficient-btn.component.html',
-  styleUrls: ['./coefficient-btn.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: CoefficientBtnComponent,
-      multi: true,
-    }
-  ]
+	selector: "app-coefficient-btn",
+	templateUrl: "./coefficient-btn.component.html",
+	styleUrls: ["./coefficient-btn.component.scss"],
+	providers: [
+		{
+			provide: NG_VALUE_ACCESSOR,
+			useExisting: CoefficientBtnComponent,
+			multi: true,
+		}
+	]
 })
-
-
-
-
 export class CoefficientBtnComponent implements OnInit, ControlValueAccessor {
 
-  public onChange!: (value: number) => void;
-  public onTouched!: () => void;
-  public value: number | null = null;
+	public onChange!: (value: number) => void;
+	public onTouched!: () => void;
+	public value: number | null = null;
 
-  constructor() { }
+	public constructor() { }
 
-  ngOnInit(): void {
-  }
+	public ngOnInit(): void {
+	}
 
-  writeValue(obj: any): void {
-    this.value = obj;
-  }
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
+	public writeValue(obj: any): void {
+		this.value = obj;
+	}
 
-  public setValue(val: number) {
-    this.value = val;
-    this.onChange(val);
-  }
+	public registerOnChange(fn: any): void {
+		this.onChange = fn;
+	}
+
+	public registerOnTouched(fn: any): void {
+		this.onTouched = fn;
+	}
+
+	public setValue(val: number) {
+		this.value = val;
+		this.onChange(val);
+	}
 
 }
