@@ -68,6 +68,22 @@ export class DartsInputComponent implements OnInit {
 			this.pointsCounter.push(
 				lastRow.map((count, i) => {
 					const shot = this.arrDarts.at(i).value;
+					if ((count -
+						shot.firstDart.dart * shot.firstDart.coefficient -
+						shot.secondDart.dart * shot.secondDart.coefficient -
+						shot.thirdDart.dart * shot.thirdDart.coefficient) === 0 || this.pointsCounter.length === 16) {
+						this.dartsForm.disable();
+					}
+					else if ((count -
+						shot.firstDart.dart * shot.firstDart.coefficient -
+						shot.secondDart.dart * shot.secondDart.coefficient -
+						shot.thirdDart.dart * shot.thirdDart.coefficient) < 0) {
+
+						return (
+							this.arrDarts.at(+lastRow).value && this.arrDarts.reset(this.dartsForm)
+						);
+
+					}
 					return (
 						count -
 						shot.firstDart.dart * shot.firstDart.coefficient -
