@@ -1,46 +1,47 @@
 <header>
-  <div class="wrapper">
-    <div class="logo-text">
-      <h1>
-        count your <br />
-        <span class="logo-text-big">points</span><br />
-      </h1>
-      <p class="logo-text-copyrighter">©Softclub Edition</p>
-    </div>
-  </div>
+	<div class="wrapper">
+		<div class="logo-text">
+			<h1>
+				count your <br />
+				<span class="logo-text-big">points</span><br />
+			</h1>
+			<p class="logo-text-copyrighter">©Softclub Edition</p>
+		</div>
+	</div>
 </header>
 <section>
-  <div class="wrapper">
-    <p class="text-sel-pl">Select players</p>
-    <div class="common">
-      <input type="text" placeholder="Search" [formControl]="search" />
-      <button routerLink="/add-player">New player</button>
-    </div>
-    <div class="list-players" *ngFor="let user of users; let i = index">
-      <div class="player">
-        <p class="username">{{ user.username }}</p>
+	<div class="wrapper">
+		<p class="text-sel-pl">Select players</p>
+		<div class="common">
+			<input type="text" placeholder="Search" [formControl]="search" />
+			<button routerLink="/add-player">New player</button>
+		</div>
+		<div class="list-players" *ngFor="let user of users; let i = index">
+			<div class="player">
+				<p class="username">{{ user.username }}</p>
 
-        <p class="email">{{ user.email }}</p>
-        <img src="../../assets/images/delete.png" (click)="removePlayer(i)" alt="del" />
-      </div>
-    </div>
-  </div>
+				<p class="email">{{ user.email }}</p>
+				<img src="../../assets/images/delete.png" (click)="removePlayer(i)" alt="del" />
+			</div>
+		</div>
+	</div>
 </section>
 <section class="type-game">
-  <div class="wrapper">
-    <div class="common-type-game">
-      <p>Choose game</p>
-      <div class="games">
-        <button class="type-game-link" required (click)="gameType = '501'"
-          [class.type-game-link-active]="gameType === '501'">
-          501
-        </button>
-        <button class="type-game-link" required (click)="gameType = '301'"
-          [class.type-game-link-active]="gameType === '301'">
-          301
-        </button>
-      </div>
-    </div>
-    <button [disabled]="gameType === null" class="start-btn" [routerLink]="['/game', gameType]">start game</button>
-  </div>
+	<div class="wrapper">
+		<div class="common-type-game">
+			<p>Choose game</p>
+			<div class="games">
+				<button class="type-game-link" required (click)="gameType = '501'"
+					[class.type-game-link-active]="gameType === '501'">
+					501
+				</button>
+				<button class="type-game-link" required (click)="gameType = '301'"
+					[class.type-game-link-active]="gameType === '301'">
+					301
+				</button>
+			</div>
+		</div>
+		<button [disabled]="gameType === null || users.length === 0" class="start-btn"
+			[routerLink]="['/game', gameType]">start game</button>
+	</div>
 </section>

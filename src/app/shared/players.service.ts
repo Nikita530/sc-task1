@@ -5,6 +5,8 @@ import { Router } from "@angular/router";
 export interface User {
 	username: string;
 	email: string;
+	isWin: boolean;
+
 }
 
 @Injectable({
@@ -15,6 +17,8 @@ export class PlayersService {
 
 	public constructor(private fb: FormBuilder, private router: Router) { }
 	public players: User[] = [];
+	public isValPlayers?: true | false = true;
+
 
 	public createNewGame(): void {
 		this.players = [];
@@ -24,6 +28,9 @@ export class PlayersService {
 	public addPlayer(user: User) {
 		this.players.push(user);
 	}
+
+
+
 
 }
 

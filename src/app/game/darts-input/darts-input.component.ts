@@ -72,6 +72,8 @@ export class DartsInputComponent implements OnInit {
 						shot.firstDart.dart * shot.firstDart.coefficient -
 						shot.secondDart.dart * shot.secondDart.coefficient -
 						shot.thirdDart.dart * shot.thirdDart.coefficient) === 0 || this.pointsCounter.length === 16) {
+
+						this.users[i].isWin = true;
 						this.dartsForm.disable();
 					}
 					else if ((count -
@@ -79,9 +81,7 @@ export class DartsInputComponent implements OnInit {
 						shot.secondDart.dart * shot.secondDart.coefficient -
 						shot.thirdDart.dart * shot.thirdDart.coefficient) < 0) {
 
-						return (
-							this.arrDarts.at(+lastRow).value && this.arrDarts.reset(this.dartsForm)
-						);
+						return (count);
 
 					}
 					return (

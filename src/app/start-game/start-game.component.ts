@@ -1,41 +1,41 @@
-import { PlayersService, User } from './../shared/players.service';
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { FormControl } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from "@angular/core";
+import { FormControl } from "@angular/forms";
+import { Observable, Subject } from "rxjs";
+import { map, tap } from "rxjs/operators";
+import { PlayersService, User } from "./../shared/players.service";
 
 @Component({
-  selector: 'app-start-game',
-  templateUrl: './start-game.component.html',
-  styleUrls: ['./start-game.component.scss'],
+	selector: "app-start-game",
+	templateUrl: "./start-game.component.html",
+	styleUrls: ["./start-game.component.scss"],
 })
 export class StartGameComponent implements OnInit, OnDestroy {
-  public user?: string;
-  public gameType: '501' | '301' | null = null;
-  /* public search?: string; */
-  public filteredPlayers?: User[];
 
-  public search = new FormControl('');
+	public constructor(private playersService: PlayersService) { }
 
-  constructor(private playersService: PlayersService) {}
+	public get users() {
+		return this.filteredPlayers || this.playersService.players;
+	}
+	public user?: string;
+	public gameType: "501" | "301" | null = null;
 
-  ngOnInit(): void {
-    this.search.valueChanges.subscribe((value: string) => {
-      this.filteredPlayers = this.playersService.players.filter((user) => user.username.startsWith(value));
-    });
-  }
+	public filteredPlayers?: User[];
+	public search = new FormControl("");
 
-  ngOnDestroy(): void {}
 
-  public get users() {
-    return this.filteredPlayers || this.playersService.players;
-  }
+	public ngOnInit(): void {
+		this.search.valueChanges.subscribe((value: string) => {
+			this.filteredPlayers = this.playersService.players.filter((user) => user.username.startsWith(value));
+		});
+	}
 
-  /* public get users() {
-    return this.playersService.players.filter((v) => v.username.match(new RegExp(this.search || '', 'i')));
-  } */
+	public ngOnDestroy(): void { }
 
-  public removePlayer(index: number) {
-    this.playersService.players.splice(index, 1);
-  }
+
+	public removePlayer(index: number) {
+		this.playersService.players.splice(index, 1);
+	}
+
+
+
 }
