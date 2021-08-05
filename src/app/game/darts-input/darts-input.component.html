@@ -1,0 +1,52 @@
+<section class="throw-results">
+	<div class="wrapper">
+		<div class="list-players" *ngFor="let user of users; let i = index">
+			<div class="player">
+				<p class="username">{{ user.username }}</p>
+			</div>
+			<form [formGroup]="dartsForm" class="form-points">
+				<div formArrayName="darts" class="arr-darts">
+					<div [formGroupName]="i" class="darts">
+						<div class="dart" formGroupName="firstDart">
+							<label class="number-dart"> Dart 1 </label>
+							<input type="text" formControlName="dart" class="inp-points" />
+							<app-coefficient-btn formControlName="coefficient"></app-coefficient-btn>
+						</div>
+						<div class="dart" formGroupName="secondDart">
+							<label class="number-dart"> Dart 2 </label>
+							<input type="text" formControlName="dart" class="inp-points" />
+							<app-coefficient-btn formControlName="coefficient"></app-coefficient-btn>
+						</div>
+						<div class="dart" formGroupName="thirdDart">
+							<label class="number-dart"> Dart 3 </label>
+							<input type="text" formControlName="dart" class="inp-points" />
+							<app-coefficient-btn formControlName="coefficient"></app-coefficient-btn>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<button (click)="savePoints()" class="add-btn">add</button>
+</section>
+<hr />
+<section class="list-results">
+	<div class="wrapper">
+		<table class="list-points">
+			<th *ngFor="let user of users">
+				{{ user.username }}
+				<img src="../../../assets/images/win-smile.png" alt="" class="win-smile" *ngIf="user.isWin">
+			</th>
+			<tr *ngFor="let row of pointsCounter.reverse(); let i = index">
+				<td *ngFor="let count of row">
+					<div class="number-shot" *ngIf="i !== pointsCounter.length - 1">
+						{{ pointsCounter.length - i - 1 }}
+					</div>
+					{{ count }}
+				</td>
+			</tr>
+
+
+		</table>
+	</div>
+</section>

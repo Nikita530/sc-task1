@@ -1,0 +1,25 @@
+ul {
+    display: flex;
+    padding: 0;
+    li {
+        list-style-type: none;
+        button {
+            background-color: white;
+            font-size: 11px;
+            width: 1.8rem;
+            height: 1.7rem;
+            color: black;
+            transition: all ease 0.2s;
+            border-left: none;
+            border-bottom: none;
+            border-top: none;
+        }
+        button:hover {
+            background-color: gray;
+        }
+        .coefficient-btn-active {
+            border-color: gray;
+            background-color: gray;
+        }
+    }
+}
