@@ -3,6 +3,12 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { PlayersService } from "./../shared/players.service";
 
+
+export interface UserFormvalue {
+	username: string;
+	email: string;
+}
+
 @Component({
 	selector: "app-add-player",
 	templateUrl: "./add-player.component.html",
@@ -17,8 +23,6 @@ export class AddPlayerComponent implements OnInit {
 		username: [null, Validators.required],
 		email: [null, Validators.email],
 	});
-
-
 
 	public ngOnInit() {
 	}

@@ -21,7 +21,7 @@
 				<p class="username">{{ user.username }}</p>
 
 				<p class="email">{{ user.email }}</p>
-				<img src="../../assets/images/delete.png" (click)="removePlayer(i)" alt="del" />
+				<img src="../../assets/images/delete.png" (click)="onRemovePlayer(user.id)" alt="del" />
 			</div>
 		</div>
 	</div>
@@ -41,7 +41,6 @@
 				</button>
 			</div>
 		</div>
-		<button [disabled]="gameType === null || users.length === 0" class="start-btn"
-			[routerLink]="['/game', gameType]">start game</button>
+		<button [disabled]="gameType === null" class="start-btn" [routerLink]="['/game', gameType]">start game</button>
 	</div>
 </section>
