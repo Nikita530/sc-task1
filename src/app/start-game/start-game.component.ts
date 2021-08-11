@@ -1,5 +1,12 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
+import { Observable, Subject } from "rxjs";
+import {
+	debounceTime,
+	distinctUntilChanged,
+	map,
+	withLatestFrom,
+} from "rxjs/operators";
 import { PlayersService, User } from "./../shared/players.service";
 
 @Component({
@@ -10,28 +17,32 @@ import { PlayersService, User } from "./../shared/players.service";
 export class StartGameComponent implements OnInit, OnDestroy {
 	public user?: string;
 	public gameType: "501" | "301" | null = null;
-	/* public search?: string; */
-	public filteredPlayers?: User[];
-
 	public search = new FormControl("");
+	public initialPlayers = this.playersService.players;
+	public $fitleredPlayers?: Observable<User[]>;
 
 	public constructor(private playersService: PlayersService) { }
-
-	public ngOnInit(): void {
+	/* public ngOnInit(): void {
 		this.search.valueChanges.subscribe((value: string) => {
 			this.filteredPlayers = this.playersService.players.filter((user) => user.username.startsWith(value));
 		});
+	} */
+
+	public ngOnInit(): void {
+		this.$fitleredPlayers = this.search.valueChanges.pipe(
+			debounceTime(300),
+			distinctUntilChanged(),
+			withLatestFrom(this.playersService.statePlayers),
+			map(([search, users]) => (search ? users?.filter((user) => user.username.startsWith(search)) : users))
+		);
 	}
+
+	/* public get viewPlayers(): User[] {
+		return this.fitleredPlayers.length || this.search.value ? this.fitleredPlayers : this.playersService.players;
+	} */
 
 	public ngOnDestroy(): void { }
 
-	public get users() {
-		return this.filteredPlayers?.length ? this.filteredPlayers : this.playersService.players;
-	}
-
-	/* public get users() {
-		return this.playersService.players.filter((v) => v.username.match(new RegExp(this.search || '', 'i')));
-	} */
 
 	public onRemovePlayer(userId: number) {
 		this.playersService.removePlayer(userId);

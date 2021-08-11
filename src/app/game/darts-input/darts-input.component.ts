@@ -72,7 +72,7 @@ export class DartsInputComponent implements OnInit {
 						shot.firstDart.dart * shot.firstDart.coefficient -
 						shot.secondDart.dart * shot.secondDart.coefficient -
 						shot.thirdDart.dart * shot.thirdDart.coefficient) === 0 || this.pointsCounter.length === 16) {
-						
+
 						this.users[i].isWin = true;
 						this.dartsForm.disable();
 					}
