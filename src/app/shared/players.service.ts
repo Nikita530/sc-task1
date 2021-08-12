@@ -15,9 +15,14 @@ export interface User {
 	providedIn: "root",
 })
 export class PlayersService {
-	public constructor(private fb: FormBuilder, private router: Router) { }
-	public statePlayers = new BehaviorSubject<User[]>([]);
+	private statePlayers = new BehaviorSubject<User[]>([]);
 	private lastId = 0;
+
+	public constructor(private fb: FormBuilder, private router: Router) { }
+
+	public get playersObservable() {
+		return this.statePlayers.asObservable()
+	}
 
 	public removePlayer(userId: number) {
 		this.statePlayers.next(this.statePlayers.getValue().filter((user) => user.id !== userId));
