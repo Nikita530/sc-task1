@@ -21,7 +21,7 @@ export class PlayersService {
 	public constructor(private fb: FormBuilder, private router: Router) { }
 
 	public get playersObservable() {
-		return this.statePlayers.asObservable()
+		return this.statePlayers.asObservable();
 	}
 
 	public removePlayer(userId: number) {

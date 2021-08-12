@@ -22,7 +22,6 @@ export class StartGameComponent implements OnInit, OnDestroy {
 	public user?: string;
 	public gameType: "501" | "301" | null = null;
 	public search = new FormControl("");
-	public initialPlayers = this.playersService.players;
 	public fitleredPlayers$?: Observable<User[]>;
 
 	public constructor(private playersService: PlayersService) { }
@@ -31,9 +30,7 @@ export class StartGameComponent implements OnInit, OnDestroy {
 			this.filteredPlayers = this.playersService.players.filter((user) => user.username.startsWith(value));
 		});
 	} */
-	/* [users, search] -> [users, search]
-	[users, search] -> 300 -> User[]
-	User[] */
+
 	public ngOnInit(): void {
 		this.fitleredPlayers$ = combineLatest([
 			this.playersService.playersObservable,
