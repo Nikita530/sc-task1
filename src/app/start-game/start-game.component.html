@@ -16,7 +16,7 @@
 			<input type="text" placeholder="Search" [formControl]="search" />
 			<button routerLink="/add-player">New player</button>
 		</div>
-		<div class="list-players" *ngFor="let user of fitleredPlayers$ | async; let i = index">
+		<div class="list-players" *ngFor="let user of fitleredPlayers$ | async">
 			<div class="player">
 				<p class="username">{{ user.username }}</p>
 
