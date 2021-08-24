@@ -18,7 +18,7 @@
 		</div>
 		<div class="list-players" *ngFor="let user of fitleredPlayers$ | async">
 			<div class="player">
-				<p class="username">{{ user.username }}</p>
+				<p class="username">{{ user.username | cutName }}</p>
 
 				<p class="email">{{ user.email }}</p>
 				<img src="../../assets/images/delete.png" (click)="onRemovePlayer(user.id)" alt="del" />

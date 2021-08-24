@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { combineLatest, Observable, Subject } from "rxjs";
 import {
@@ -11,12 +11,15 @@ import {
 	tap,
 	withLatestFrom,
 } from "rxjs/operators";
+import { CutNamePipe } from "../cut-name.pipe";
 import { PlayersService, User } from "./../shared/players.service";
 
 @Component({
 	selector: "app-start-game",
 	templateUrl: "./start-game.component.html",
 	styleUrls: ["./start-game.component.scss"],
+	changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class StartGameComponent implements OnInit, OnDestroy {
 	public user?: string;
@@ -24,7 +27,9 @@ export class StartGameComponent implements OnInit, OnDestroy {
 	public search = new FormControl("");
 	public fitleredPlayers$?: Observable<User[]>;
 
-	public constructor(private playersService: PlayersService) { }
+	public constructor(private playersService: PlayersService) {
+		console.log("no service", playersService.players);
+	}
 	/* public ngOnInit(): void {
 		this.search.valueChanges.subscribe((value: string) => {
 			this.filteredPlayers = this.playersService.players.filter((user) => user.username.startsWith(value));
@@ -35,7 +40,7 @@ export class StartGameComponent implements OnInit, OnDestroy {
 		this.fitleredPlayers$ = combineLatest([
 			this.playersService.playersObservable,
 			this.search.valueChanges.pipe(debounceTime(300), distinctUntilChanged(), startWith("")),
-		]).pipe(map(([users, search]) => (search ? users?.filter((user) => user.username.startsWith(search)) : users)));
+		]).pipe(map(([users, search]) => (search ? users?.filter((user) => user.username.includes(search)) : users)));
 
 	}
 	/* this.$fitleredPlayers = this.search.valueChanges.pipe(
