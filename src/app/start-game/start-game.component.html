@@ -44,3 +44,28 @@
 		<button [disabled]="gameType === null" class="start-btn" [routerLink]="['/game', gameType]">start game</button>
 	</div>
 </section>
+
+<!-- <ng-template #myTmpl>
+	<div><span><b>asdasdad</b></span></div>
+</ng-template> -->
+
+
+<!-- <p>
+	The condition is currently
+	<span [ngClass]="{ 'a': !condition, 'b': condition, 'tooltip': true }">{{condition}}</span>.
+	<button (click)="condition = !condition" [ngClass]="{ 'a': condition, 'b': !condition }">
+		Toggle condition to {{condition ? 'false' : 'true'}}
+	</button>
+</p>
+
+<p *appTooltip="condition" class="tooltip a">
+	(A)
+</p>
+
+<p *appTooltip="!condition" class="tooltip b">
+	(B)
+</p> -->
+
+<p *appTooltip="hasWiew === true">
+	Компания заказчика
+</p>

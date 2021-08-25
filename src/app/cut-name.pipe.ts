@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from "@angular/core";
 })
 export class CutNamePipe implements PipeTransform {
 
-	public transform(value: string, maxLength: number = 20): string {
+	public transform(value: string, maxLength: number = 5): string {
 		if (value.length > maxLength) {
 			return value.substring(0, maxLength);
 		}
