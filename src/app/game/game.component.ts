@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { ModalService } from "../shared/modal.service";
 import { PlayersService } from "../shared/players.service";
 
 
@@ -13,6 +14,7 @@ export class GameComponent implements OnInit {
 
 	public constructor(
 		private playersService: PlayersService,
+		private ms: ModalService,
 		private router: Router,
 	) {
 
@@ -21,12 +23,17 @@ export class GameComponent implements OnInit {
 	public pointsCounter: number[][] = [];
 	public coefficientBtn: 1 | 2 | 3 = 1;
 
-	// public createNewGame(): void {
-	//   this.playersService.players = [];
-	//   this.router.navigate(['/start-game']);
-	// }
+
 	public ngOnInit(): void {
 
+	}
+
+	public openModal(id: string) {
+		this.ms.open(id);
+	}
+
+	public closeModal(id: string) {
+		this.ms.close(id);
 	}
 
 	public onNewGameClick() {
@@ -34,3 +41,4 @@ export class GameComponent implements OnInit {
 	}
 
 }
+

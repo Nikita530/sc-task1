@@ -41,3 +41,23 @@ header {
 hr {
 	color: white;
 }
+.btn-open-modal{
+	background-color: rgba(255, 217, 0, 0.856);
+	color: black;
+	padding: 0.5rem 1rem;
+	font-size: 20px;
+	border-radius: 0.3rem;
+}
+
+.btn-close-modal{
+	background-color: rgba(255, 217, 0, 0.856);
+	color: black;
+	padding: 0.5rem 1rem;
+	font-size: 17px;
+	border-radius: 1.3rem;
+}
+
+.custom-modal-text{
+	color: white;
+	font-size: 24px;
+}

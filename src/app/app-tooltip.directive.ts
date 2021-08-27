@@ -1,4 +1,5 @@
-import { Directive, ElementRef, Host, HostListener, Input, TemplateRef, ViewContainerRef } from "@angular/core";
+import { Directive, ElementRef, HostListener, Input } from "@angular/core";
+import { StartGameComponent } from "./start-game/start-game.component";
 
 @Directive({
 	selector: "[appTooltip]"
@@ -8,32 +9,24 @@ export class TooltipDirective {
 	public hasView = false;
 
 	public constructor(
-		private tr: TemplateRef<any>,
-		private vc: ViewContainerRef,
 		private el: ElementRef
 	) { }
 
-	@HostListener("mouseenter") public onmouseenter() {
-		this.hasView = true;
+
+	@Input() public appTooltip = " ";
+
+	@HostListener("mouseenter") public onMouseEnter() {
+		this.showMessage("black");
 	}
 
-	// @HostListener("mouseleave") public onmouseleave() {
-	// 	this.hasView = false;
-	// }
+	@HostListener("mouseleave") public onMouseLeave() {
+		this.showMessage("");
+	}
 
-	// @Input() public set appTooltip(condition: boolean) {
+	private showMessage(color: string) {
+		this.el.nativeElement.style.backgroundColor = color;
+	}
 
-
-	// 	if (!condition && !this.hasView) {
-	// 		this.vc.createEmbeddedView(this.tr);
-	// 		this.hasView = true;
-	// 	}
-	// 	else if (condition && this.hasView) {
-	// 		this.vc.clear();
-	// 		this.hasView = false;
-
-	// 	}
-	// }
 
 
 

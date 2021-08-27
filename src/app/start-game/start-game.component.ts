@@ -26,10 +26,9 @@ export class StartGameComponent implements OnInit, OnDestroy {
 	public gameType: "501" | "301" | null = null;
 	public search = new FormControl("");
 	public fitleredPlayers$?: Observable<User[]>;
-	public condition = false;
+	public textMessage = "компания заказчика";
 
 	public constructor(private playersService: PlayersService) {
-		console.log("no service", playersService.players);
 	}
 	/* public ngOnInit(): void {
 		this.search.valueChanges.subscribe((value: string) => {
