@@ -19,7 +19,7 @@ import { PlayersService, User } from "./../shared/players.service";
 })
 export class StartGameComponent implements OnInit, OnDestroy {
 	public user?: string;
-	public gameType: "501" | "301" | null = null;
+	public gameType?: "501" | "301" | null = null;
 	public search = new FormControl("");
 	public fitleredPlayers$?: Observable<User[]>;
 	public textMessage = "компания заказчика";
