@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 @Component({
@@ -11,7 +11,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 			useExisting: CoefficientBtnComponent,
 			multi: true,
 		}
-	]
+	],
+	changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class CoefficientBtnComponent implements OnInit, ControlValueAccessor {
 
@@ -19,13 +21,16 @@ export class CoefficientBtnComponent implements OnInit, ControlValueAccessor {
 	public onTouched!: () => void;
 	public value: number | null = null;
 
-	public constructor() { }
+	public constructor(
+		private cdr: ChangeDetectorRef
+	) { }
 
 	public ngOnInit(): void {
 	}
 
 	public writeValue(obj: any): void {
 		this.value = obj;
+		this.cdr.detectChanges();
 	}
 
 	public registerOnChange(fn: any): void {

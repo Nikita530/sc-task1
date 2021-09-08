@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { PlayersService } from "../../shared/players.service";
@@ -11,7 +11,9 @@ export type gameType = 501 | 301;
 @Component({
 	selector: "app-darts-input",
 	templateUrl: "./darts-input.component.html",
-	styleUrls: ["./darts-input.component.scss"]
+	styleUrls: ["./darts-input.component.scss"],
+	changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class DartsInputComponent implements OnInit {
 

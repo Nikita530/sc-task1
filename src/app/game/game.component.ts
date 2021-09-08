@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, ComponentFactoryResolver, OnInit, Output, ViewChild, ViewContainerRef } from "@angular/core";
 import { Router } from "@angular/router";
+import { ModalComponent } from "../modal/modal.component";
 import { PlayersService } from "../shared/players.service";
 
 
@@ -7,12 +8,15 @@ import { PlayersService } from "../shared/players.service";
 	selector: "app-game",
 	templateUrl: "./game.component.html",
 	styleUrls: ["./game.component.scss"],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GameComponent implements OnInit {
 
 	public constructor(
 		private playersService: PlayersService,
 		private router: Router,
+		private resolver: ComponentFactoryResolver,
+		public cr: ViewContainerRef,
 	) {
 
 	}
@@ -20,11 +24,19 @@ export class GameComponent implements OnInit {
 	public pointsCounter: number[][] = [];
 	public coefficientBtn: 1 | 2 | 3 = 1;
 
-	// public createNewGame(): void {
-	//   this.playersService.players = [];
-	//   this.router.navigate(['/start-game']);
-	// }
+
 	public ngOnInit(): void {
+
+	}
+
+	public showModal() {
+		const modalFactory = this.resolver.resolveComponentFactory(ModalComponent);
+		this.cr.clear();
+
+		const component = this.cr.createComponent(modalFactory);
+		component.instance.delete.subscribe(() => {
+			this.cr.clear();
+		});
 
 	}
 
@@ -33,3 +45,6 @@ export class GameComponent implements OnInit {
 	}
 
 }
+
+
+

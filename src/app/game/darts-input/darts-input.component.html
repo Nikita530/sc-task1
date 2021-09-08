@@ -33,20 +33,26 @@
 <section class="list-results">
 	<div class="wrapper">
 		<table class="list-points">
-			<th *ngFor="let user of users">
-				{{ user.username }}
-				<img src="../../../assets/images/win-smile.png" alt="" class="win-smile" *ngIf="user.isWin">
-			</th>
-			<tr *ngFor="let row of pointsCounter.reverse(); let i = index">
+			<tr class="usernames">
+				<th *ngFor="let user of users">
+					{{ user.username }}
+
+					<img src="../../../assets/images/winner.jpg" alt="" *ngIf="user.isWin">
+				</th>
+			</tr>
+			<tr *ngFor="let row of pointsCounter; let i = index">
 				<td *ngFor="let count of row">
+					<div *ngIf="count === 0" class="winner">
+						<img src="../../../assets/images/winner.jpg" alt="">
+					</div>
+
 					<div class="number-shot" *ngIf="i !== pointsCounter.length - 1">
 						{{ pointsCounter.length - i - 1 }}
 					</div>
+
 					{{ count }}
 				</td>
 			</tr>
-
-
 		</table>
 	</div>
 </section>
